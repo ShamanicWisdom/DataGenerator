@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="450.0" prefHeight="500.0" prefWidth="475.0" styleClass="background" stylesheets="@../../../../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="szaman.datagenerator.view.generation.AddTableController">
+   <children>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="390.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="35.0" prefWidth="135.0" text="Add" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="75.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="383.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCancel" prefHeight="35.0" prefWidth="135.0" text="Cancel" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="75.0" />
+      <Label alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="40.0" prefWidth="375.0" styleClass="label-dialog-title" text="Adding a New Table" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="13.0" layoutY="217.0" prefHeight="170.0" prefWidth="450.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <content>
+            <GridPane fx:id="gridPane" alignment="TOP_CENTER" maxWidth="435.0" prefHeight="0.0" prefWidth="435.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" />
+              </columnConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <GridPane alignment="TOP_CENTER" layoutX="14.0" layoutY="79.0" maxWidth="425.0" prefHeight="0.0" prefWidth="425.0">
+         <children>
+            <Label styleClass="label-table-content" text="Table Name:" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="tableNameField" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="105.0" prefWidth="105.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.0" minWidth="10.0" prefWidth="317.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="182.0" prefHeight="35.0" prefWidth="125.0" styleClass="label-table-content" text="Column Name" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="182.0" prefHeight="35.0" prefWidth="125.0" styleClass="label-table-content" text="Column Type" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="182.0" prefHeight="35.0" prefWidth="125.0" styleClass="label-table-content" text="Relation" textAlignment="CENTER" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="149.0" mnemonicParsing="false" onAction="#deleteRowFromGrid" prefHeight="25.0" prefWidth="25.0" text="-" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="149.0" mnemonicParsing="false" onAction="#addRowToGrid" prefHeight="25.0" prefWidth="25.0" text="+" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="182.0" prefHeight="35.0" prefWidth="75.0" styleClass="label-table-content" text="Allow Nulls" textAlignment="CENTER" AnchorPane.rightAnchor="10.0" />
+   </children>
+</AnchorPane>

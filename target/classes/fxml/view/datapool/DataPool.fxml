@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="szaman.datagenerator.view.datapool.DataPoolController">
+   <children>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="24.0" maxHeight="55.0" maxWidth="165.0" minHeight="55.0" minWidth="165.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="55.0" prefWidth="165.0" text="Back" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="24.0" />
+      <TableView fx:id="dataPoolTable" layoutX="108.0" layoutY="120.0" maxWidth="600.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="75.0" AnchorPane.topAnchor="120.0">
+        <columns>
+          <TableColumn fx:id="poolTableNameColumn" maxWidth="450.0" minWidth="450.0" prefWidth="450.0" text="Data Table Name" />
+            <TableColumn fx:id="poolDataCountColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Data Count" />
+        </columns>
+      </TableView>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="800.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="55.0" prefWidth="150.0" text="Delete Pool" AnchorPane.rightAnchor="95.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="800.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleManage" prefHeight="55.0" prefWidth="150.0" text="Manage Data" AnchorPane.rightAnchor="95.0" />
+      <Label alignment="CENTER" layoutX="353.0" layoutY="27.0" styleClass="label-title" text="Data Pool" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="800.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="55.0" prefWidth="150.0" text="New Pool" AnchorPane.rightAnchor="95.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="800.0" layoutY="372.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="55.0" prefWidth="150.0" text="Edit Pool" AnchorPane.rightAnchor="95.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" styleClass="background" stylesheets="@../../../../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="szaman.datagenerator.view.datapool.data.SingleDataController">
+   <children>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="55.0" prefWidth="165.0" text="Back" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="24.0" />
+      <TableView fx:id="singleDataTable" layoutX="400.0" layoutY="250.0" prefHeight="500.0" prefWidth="450.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="120.0">
+        <columns>
+          <TableColumn fx:id="idColumn" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="dataColumn" maxWidth="399.0" minWidth="399.0" prefWidth="399.0" text="Data" />
+        </columns>
+      </TableView>
+      <GridPane layoutX="523.0" layoutY="152.0" maxHeight="390.0" maxWidth="425.0" minHeight="390.0" minWidth="450.0" prefHeight="390.0" prefWidth="425.0" style="-fx-border-color: white;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="175.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="lastModifiedLabel" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" prefHeight="35.0" prefWidth="250.0" styleClass="label-table-content" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="dataLabel" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" prefHeight="35.0" prefWidth="250.0" styleClass="label-table-content" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="dataIDLabel" maxHeight="35.0" maxWidth="250.0" minHeight="35.0" minWidth="250.0" prefHeight="35.0" prefWidth="250.0" styleClass="label-table-content" text=" " GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Label>
+            <Label alignment="CENTER_RIGHT" maxHeight="35.0" maxWidth="150.0" minHeight="35.0" minWidth="150.0" prefHeight="35.0" prefWidth="150.0" styleClass="label-table-content" text="ID" GridPane.halignment="RIGHT">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="10.0" />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin></Label>
+            <Label alignment="CENTER_RIGHT" maxHeight="35.0" maxWidth="150.0" minHeight="35.0" minWidth="150.0" prefHeight="35.0" prefWidth="150.0" styleClass="label-table-content" text="Data" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin></Label>
+            <Label alignment="CENTER_RIGHT" maxHeight="35.0" maxWidth="150.0" minHeight="35.0" minWidth="150.0" prefHeight="35.0" prefWidth="150.0" styleClass="label-table-content" text="Last Modified" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin></Label>
+         </children>
+      </GridPane>
+      <Label layoutX="523.0" layoutY="117.0" maxHeight="35.0" minHeight="30.0" prefHeight="35.0" prefWidth="238.0" styleClass="label-table-title" text="Data:">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font></Label>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="681.0" layoutY="570.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="55.0" prefWidth="135.0" text="Add" AnchorPane.rightAnchor="184.0" />
+      <Label fx:id="dataTableNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" layoutY="25.0" prefHeight="53.0" prefWidth="573.0" styleClass="label-title" text="Single Data Table Content" textAlignment="CENTER" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

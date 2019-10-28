@@ -1,0 +1,7 @@
+.button {
+    -fx-font-weight: bold;
+}
+
+.choice-box .context-menu {
+    /*-fx-pref-height: 220; /* Your width for the context menu background shown */
+}
