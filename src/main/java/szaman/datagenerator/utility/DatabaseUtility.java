@@ -7,13 +7,16 @@ package szaman.datagenerator.utility;
 
 //Other own classes:
 
+import java.io.BufferedWriter;
 import szaman.datagenerator.view.generation.model.DatabaseConnection;
 import szaman.datagenerator.view.generation.model.ForeignKey;
 
 //Other classes:
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -48,11 +51,12 @@ public class DatabaseUtility
         try
         {      
             databaseName = databaseConnection.getDatabaseName();
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");   
             connection = DriverManager.getConnection(databaseConnection.getConnectionURL());   
             connection.close();
             return "";
         }
-        catch(SQLException exception)
+        catch(SQLException | ClassNotFoundException exception)
         {
             databaseName = "";
             return "There is a problem with connection!\n"
@@ -66,10 +70,11 @@ public class DatabaseUtility
         try
         {  
             databaseName = databaseConnection.getDatabaseName();
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");  
             connection = DriverManager.getConnection(databaseConnection.getConnectionURL());   
             return "";
         }
-        catch(SQLException exception)
+        catch(SQLException | ClassNotFoundException exception)
         {
             databaseName = "";
             return "There is a problem with connection!\n"
@@ -339,16 +344,18 @@ public class DatabaseUtility
             else
             {
                 chosenTableName = "\"" + tableName + "\"";
-            }
+            }            
             
             Utility utility = new Utility();
             String csvErrorFileName = System.getProperty("user.dir") + "\\" + utility.pullProgramName() + " " + utility.getCurrentDate() + "Error output.csv";
             String recoveryModeName = "";
+            
             if(recoveryModeSelected == true)
             {
                 recoveryModeName = getRecoveryModeName(databaseName);
-                System.out.println("RECOVERY: " + recoveryModeName + " SELECTED: " + recoveryToggle);
-                if(recoveryModeName.equals("BULK_LOGGED") == false)
+                System.out.println("RECOVERY: " + recoveryModeName + " SELECTED: " + recoveryToggle);     
+                
+                if(recoveryModeName.equals(recoveryToggle) == false)
                 {
                     //Switching to BULK_LOGGED for logging minimalization.
                     sql += "ALTER DATABASE " + databaseName + " SET RECOVERY " + recoveryToggle + ";\n";
@@ -379,7 +386,7 @@ public class DatabaseUtility
                           + "ERRORFILE = '" + csvErrorFileName + "',"
                           + "TABLOCK)\n";
                     
-                    statement = connection.createStatement();
+                    statement = connection.createStatement();    
                     statement.execute(sql);
                     statement.close();
                 }
@@ -394,7 +401,7 @@ public class DatabaseUtility
                       + "ERRORFILE = '" + csvErrorFileName + "',"
                       + "TABLOCK)\n";
 
-                statement = connection.createStatement();
+                statement = connection.createStatement();  
                 statement.execute(sql);
                 statement.close();
             }
@@ -404,6 +411,19 @@ public class DatabaseUtility
         }
         catch (SQLException exception)
         {
+            
+            try
+                {
+                    try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("error.txt"), StandardCharsets.UTF_8)))
+                    {
+                        bufferedWriter.write(exception.toString());
+                    }
+                }
+                catch(IOException e)
+                {
+
+                }
+            
             System.out.println("ERROR: " + exception.toString());
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error!");

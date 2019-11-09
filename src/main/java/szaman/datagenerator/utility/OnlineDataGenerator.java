@@ -591,7 +591,8 @@ public class OnlineDataGenerator
                 try
                 {
                     updateMessage("Exporting data...");
-                    if(imageTypeGeneratedFiles.isEmpty())
+                    
+                    if(imageTypeGeneratedFiles.isEmpty() == true)
                     {
                         databaseUtil.exportData(chosenTableName, csvFileName, recoveryModeSelected, recoveryToggle);
                     }

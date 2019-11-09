@@ -28,7 +28,7 @@ public class Utility
     //Author's nickname.
     String authorNickname = "Szaman";
     //Recent build number, manually changed.
-    String applicationBuildNumber = "0.9.85";
+    String applicationBuildNumber = "0.9.89";
     
     //Pull program's name only.
     public String pullProgramName()
@@ -58,7 +58,17 @@ public class Utility
         Date date = new Date(file.lastModified());  
         //Date formatting.
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, HH:mm");
-        String build = pullBuildNumber() + ", " + dateFormat.format(date);
+        
+        String build = "";
+        if(file.exists())
+        {
+            build = pullBuildNumber() + ", " + dateFormat.format(date);
+        }
+        else
+        {
+            build = pullBuildNumber();
+        }
+         
         return build;
     }
     

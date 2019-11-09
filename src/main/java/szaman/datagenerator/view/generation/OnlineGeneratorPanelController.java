@@ -20,6 +20,7 @@ import szaman.datagenerator.view.generation.model.ForeignKey;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
 import java.io.File;
+import java.io.FileNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -195,21 +196,25 @@ public class OnlineGeneratorPanelController
             String name = method.getName();
             methodsList.add(name);
         }
+        
         //Adding database pool tables to tablesList.
         dataPoolUtil.createConnection();
         tablesList = dataPoolUtil.getNonEmptyTableNames(tablesList);
-        
+                
         //Adding image pools to imageDirectoryList.
         File program = new File("");
         String programPath = program.getAbsolutePath() + "\\ImageContainer"; 
         program = new File(programPath);
-        File test[]; // = new ArrayList<>();
-        test = program.getAbsoluteFile().listFiles();
-        for(int i = 0; i < test.length; i++)
+        if(program.exists())
         {
-            if(test[i].isDirectory())
+            File test[]; // = new ArrayList<>();
+            test = program.getAbsoluteFile().listFiles();
+            for (File test1 : test) 
             {
-                imageDirectoryList.add(test[i].getName());
+                if (test1.isDirectory()) 
+                {
+                    imageDirectoryList.add(test1.getName());
+                }
             }
         }
         
@@ -289,48 +294,39 @@ public class OnlineGeneratorPanelController
         simpleRecovery.setToggleGroup(radioButtonToggleGroup);
         simpleRecovery.setUserData("SIMPLE");
         
-        recoveryModeCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() 
-        {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) 
+        recoveryModeCheckBox.selectedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+            if(recoveryModeCheckBox.isSelected()) 
             {
-                if(recoveryModeCheckBox.isSelected())
-                {
-                    fullRecovery.setDisable(false);
-                    fullRecovery.setVisible(true);
-                    fullRecovery.setSelected(true);
-                    chosenToggle = radioButtonToggleGroup.getSelectedToggle().getUserData().toString();
-                    bulkRecovery.setDisable(false);
-                    bulkRecovery.setVisible(true);
-                    simpleRecovery.setDisable(false);
-                    simpleRecovery.setVisible(true);
-                    askCircle.setVisible(true);
-                    askCircle.setDisable(false);                    
-                }
-                else
-                {
-                    fullRecovery.setDisable(true);
-                    fullRecovery.setVisible(false);
-                    bulkRecovery.setDisable(true);
-                    bulkRecovery.setVisible(false);
-                    simpleRecovery.setDisable(true);
-                    simpleRecovery.setVisible(false);
-                    askCircle.setVisible(false);
-                    askCircle.setDisable(true);
-                }
+                fullRecovery.setDisable(false);
+                fullRecovery.setVisible(true);
+                fullRecovery.setSelected(true);
+                chosenToggle = radioButtonToggleGroup.getSelectedToggle().getUserData().toString();
+                bulkRecovery.setDisable(false);
+                bulkRecovery.setVisible(true);
+                simpleRecovery.setDisable(false);
+                simpleRecovery.setVisible(true);
+                askCircle.setVisible(true);
+                askCircle.setDisable(false);
+            }
+            else
+            {
+                fullRecovery.setDisable(true);
+                fullRecovery.setVisible(false);
+                bulkRecovery.setDisable(true);
+                bulkRecovery.setVisible(false);
+                simpleRecovery.setDisable(true);
+                simpleRecovery.setVisible(false);
+                askCircle.setVisible(false);
+                askCircle.setDisable(true);
             }
         });
                 
-        radioButtonToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>()
-        {
-            public void changed(ObservableValue<? extends Toggle> ov, Toggle oldToggle, Toggle newToggle) 
+        radioButtonToggleGroup.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> ov, Toggle oldToggle, Toggle newToggle) -> {
+            if (radioButtonToggleGroup.getSelectedToggle() != null) 
             {
-                if (radioButtonToggleGroup.getSelectedToggle() != null) 
-                {
-                    //changing the value of chosenToggle variable.
-                    chosenToggle = radioButtonToggleGroup.getSelectedToggle().getUserData().toString();
-                    System.out.println("Chosen Toggle: " + chosenToggle);
-                }                
+                //changing the value of chosenToggle variable.
+                chosenToggle = radioButtonToggleGroup.getSelectedToggle().getUserData().toString();
+                System.out.println("Chosen Toggle: " + chosenToggle);                
             }
         });
     }
